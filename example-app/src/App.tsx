@@ -19,6 +19,7 @@ import CollectCardPaymentScreen from './screens/CollectCardPaymentScreen';
 import SetupIntentScreen from './screens/SetupIntentScreen';
 import LogListScreen from './screens/LogListScreen';
 import LogScreen from './screens/LogScreen';
+import CameraScreen from './screens/CameraScreen';
 import RegisterInternetReaderScreen from './screens/RegisterInternetReaderScreen';
 import {
   Reader,
@@ -193,6 +194,11 @@ export default function App() {
               name="DatabaseScreen"
               options={{ headerTitle: 'DatabaseScreen' }}
               component={DatabaseScreen}
+            />
+            <Stack.Screen
+              name="CameraScreen"
+              options={{ headerTitle: 'CameraScreen' }}
+              component={CameraScreen}
             />
             <Stack.Screen
               name="DiscoverReadersScreen"

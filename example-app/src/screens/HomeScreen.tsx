@@ -194,6 +194,13 @@ export default function HomeScreen() {
                 });
               }}
             />
+            <ListItem
+              title="Blox Scanner"
+              color={colors.blue}
+              onPress={async () => {
+                navigation.navigate('CameraScreen');
+              }}
+            />
 
             <ListItem
               title="Register Internet Reader"

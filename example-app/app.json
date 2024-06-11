@@ -20,12 +20,20 @@
           "bluetoothAlwaysUsagePermission": "This app uses Bluetooth to connect to supported card readers.",
           "localNetworkUsagePermission": "This app uses the local WiFi network to connect to supported card readers."
         }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
+        }
       ]
     ],
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.example.stripeterminalreactnative"
@@ -35,10 +43,19 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.example.stripeterminalreactnative"
+      "package": "com.example.stripeterminalreactnative",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "da9b978e-5290-4e4b-919d-2267ac97dc86"
+      }
     }
   }
 }
