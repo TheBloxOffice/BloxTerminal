@@ -1,6 +1,6 @@
 export const colors = {
   blurple: '#6969D4',
-  blurple_dark: '#6969D4',
+  blurple_dark: '#5460D4',
   blue: '#6969D4',
   white: '#181818',
   light_gray: '#111111',

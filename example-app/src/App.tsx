@@ -21,6 +21,7 @@ import LogListScreen from './screens/LogListScreen';
 import LogScreen from './screens/LogScreen';
 import MenuScreen from './screens/MenuScreen';
 import CameraScreen from './screens/CameraScreen';
+import LoginScreen from './screens/LoginScreen';
 import RegisterInternetReaderScreen from './screens/RegisterInternetReaderScreen';
 import {
   Reader,
@@ -185,20 +186,83 @@ export default function App() {
       <>
         <StatusBar
           backgroundColor={colors.blurple_dark}
-          barStyle="dark-content"
+          barStyle="light-content"
           translucent
         />
 
         <NavigationContainer>
-          <Stack.Navigator screenOptions={screenOptions} mode="modal">
+          <Stack.Navigator screenOptions={screenOptions} mode="modal" initialRouteName="LoginScreen">
+            <Stack.Screen name="Blox Terminal" component={LoginScreen} />
             <Stack.Screen
-              name="HomeScreen"
-              component={HomeScreen}
-              options={{
+              name="MenuScreen"
+              component={MenuScreen}
+              options={({ navigation }) => ({
                 headerTitle: () => (
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                     <View style={{ flex: 1, alignItems: 'flex-start' }}>
-                      <Text style={{ textAlign: 'left', color: 'white' }}>Blox Terminal</Text>
+                      <Text style={{ textAlign: 'left', color: 'white' }}>Menu</Text>
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'center' }}>
+                      <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
+                        <Image
+                          source={require('./assets/blox.png')}
+                          style={{ width: 100, height: 42 }}
+                          resizeMode="contain"
+                        />
+                      </TouchableOpacity>
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'flex-end' }}>
+                    </View>
+                  </View>
+                ),
+                headerTitleAlign: 'center',
+              })}
+            />
+            <Stack.Screen
+              name="HomeScreen"
+              component={HomeScreen}
+              options={({ navigation }) => ({
+                headerTitle: () => (
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                    <View style={{ flex: 1, alignItems: 'flex-start' }}>
+                      <Text style={{ textAlign: 'left', color: 'white' }}>Sign Out</Text>
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'center' }}>
+                      <TouchableOpacity>
+                        <Image
+                          source={require('./assets/blox.png')}
+                          style={{ width: 100, height: 42 }}
+                          resizeMode="contain"
+                        />
+                      </TouchableOpacity>
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'flex-end' }}>
+                    </View>
+                  </View>
+                ),
+                headerTitleAlign: 'center',
+                headerRight: () => (
+                  <View style={{ alignItems: 'center' }}>
+                    <TouchableOpacity>
+                      <Ionicons
+                        name="menu"
+                        size={33}
+                        color="white"
+                        onPress={() => navigation.navigate('MenuScreen')}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                ),
+              })}
+            />
+            <Stack.Screen
+              name="DatabaseScreen"
+              component={DatabaseScreen}
+              options={({ navigation }) => ({
+                headerTitle: () => (
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                    <View style={{ flex: 1, alignItems: 'flex-start' }}>
+                      <Text style={{ textAlign: 'left', color: 'white' }}>Database</Text>
                     </View>
                     <View style={{ flex: 1, alignItems: 'center' }}>
                       <TouchableOpacity>
@@ -211,70 +275,23 @@ export default function App() {
                       </TouchableOpacity>
                     </View>
                     <View style={{ flex: 1, alignItems: 'flex-end' }}>
-                      <TouchableOpacity>
-                        <Ionicons name="menu" size={33} color="white" onPress={() => navigation.navigate('MenuScreen')}/>
-                      </TouchableOpacity>
                     </View>
                   </View>
                 ),
-                headerTitleAlign: 'center'
-              }}
-            />
-            <Stack.Screen
-              name="DatabaseScreen"
-              component={DatabaseScreen}
-              options={{
-                headerTitle: () => (
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                    <View style={{ flex: 1, alignItems: 'flex-start' }}>
-                      <Text style={{ textAlign: 'left', color: 'white' }}>Database</Text>
-                    </View>
-                    <View style={{ flex: 1, alignItems: 'center' }}>
-                      <TouchableOpacity>
-                        <Image
-                          source={require('./assets/blox.png')}
-                          style={{ width: 100, height: 42 }}
-                          resizeMode="contain"
-                        />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={{ flex: 1, alignItems: 'flex-end' }}>
-                      <TouchableOpacity>
-                        <Ionicons name="menu" size={33} color="white" />
-                      </TouchableOpacity>
-                    </View>
+                headerTitleAlign: 'center',
+                headerRight: () => (
+                  <View style={{ alignItems: 'center' }}>
+                    <TouchableOpacity>
+                      <Ionicons
+                        name="menu"
+                        size={33}
+                        color="white"
+                        onPress={() => navigation.navigate('MenuScreen')}
+                      />
+                    </TouchableOpacity>
                   </View>
                 ),
-                headerTitleAlign: 'center'
-              }}
-            />
-            <Stack.Screen
-              name="MenuScreen"
-              component={MenuScreen}
-              options={{
-                headerTitle: () => (
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                    <View style={{ flex: 1, alignItems: 'flex-start' }}>
-                      <Text style={{ textAlign: 'left', color: 'white' }}>Menu</Text>
-                    </View>
-                    <View style={{ flex: 1, alignItems: 'center' }}>
-                      <TouchableOpacity>
-                        <Image
-                          source={require('./assets/blox.png')}
-                          style={{ width: 100, height: 42 }}
-                          resizeMode="contain"
-                        />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={{ flex: 1, alignItems: 'flex-end' }}>
-                      <TouchableOpacity>
-                        <Ionicons name="menu" size={33} color="white" />
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                ),
-                headerTitleAlign: 'center'
-              }}
+              })}
             />
             <Stack.Screen
               name="CameraScreen"
@@ -342,7 +359,7 @@ export default function App() {
                 headerBackAccessibilityLabel: 'logs-back',
                 headerLeft: () => (
                   <HeaderBackButton
-                    onPress={() => navigation.navigate('Terminal')}
+                    onPress={() => navigation.navigate('HomeScreen')}
                   />
                 ),
               })}

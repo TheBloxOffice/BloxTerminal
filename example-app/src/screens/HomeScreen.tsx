@@ -149,7 +149,7 @@ export default function HomeScreen() {
       <List title="MENU">
         <ListItem
           title="Menu"
-          onPress={async () => {
+          onPress={() => {
             navigation.navigate('MenuScreen');
           }}
         />
@@ -314,6 +314,7 @@ const styles = StyleSheet.create({
   image: {
     width: 40,
     height: 24,
+    backgroundColor: 'white',
   },
   imageContainer: {
     borderRadius: 6,
