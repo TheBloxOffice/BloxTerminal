@@ -146,6 +146,14 @@ export default function HomeScreen() {
           }}
         />
       </List>
+      <List title="MENU">
+        <ListItem
+          title="Menu"
+          onPress={async () => {
+            navigation.navigate('MenuScreen');
+          }}
+        />
+      </List>
     </>
   );
 

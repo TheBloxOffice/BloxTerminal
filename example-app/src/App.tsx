@@ -6,7 +6,7 @@ import {
   TransitionPresets,
 } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
-import { Platform, StatusBar, StyleSheet } from 'react-native';
+import { Platform, StatusBar, StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
 import { colors } from './colors';
 import { LogContext, Log, Event } from './components/LogContext';
 import DiscoverReadersScreen from './screens/DiscoverReadersScreen';
@@ -19,6 +19,7 @@ import CollectCardPaymentScreen from './screens/CollectCardPaymentScreen';
 import SetupIntentScreen from './screens/SetupIntentScreen';
 import LogListScreen from './screens/LogListScreen';
 import LogScreen from './screens/LogScreen';
+import MenuScreen from './screens/MenuScreen';
 import CameraScreen from './screens/CameraScreen';
 import RegisterInternetReaderScreen from './screens/RegisterInternetReaderScreen';
 import {
@@ -29,6 +30,7 @@ import {
 } from '@stripe/stripe-terminal-react-native';
 import { Alert, LogBox } from 'react-native';
 import DatabaseScreen from './screens/DatabaseScreen';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export type RouteParamList = {
   UpdateReader: {
@@ -183,17 +185,96 @@ export default function App() {
       <>
         <StatusBar
           backgroundColor={colors.blurple_dark}
-          barStyle="light-content"
+          barStyle="dark-content"
           translucent
         />
 
         <NavigationContainer>
           <Stack.Navigator screenOptions={screenOptions} mode="modal">
-            <Stack.Screen name="Terminal" component={HomeScreen} />
+            <Stack.Screen
+              name="HomeScreen"
+              component={HomeScreen}
+              options={{
+                headerTitle: () => (
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                    <View style={{ flex: 1, alignItems: 'flex-start' }}>
+                      <Text style={{ textAlign: 'left', color: 'white' }}>Blox Terminal</Text>
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'center' }}>
+                      <TouchableOpacity>
+                        <Image
+                          source={require('./assets/blox.png')}
+                          style={{ width: 100, height: 42 }}
+                          resizeMode="contain"
+                          onPress={() => navigation.navigate('HomeScreen')}
+                        />
+                      </TouchableOpacity>
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'flex-end' }}>
+                      <TouchableOpacity>
+                        <Ionicons name="menu" size={33} color="white" onPress={() => navigation.navigate('MenuScreen')}/>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                ),
+                headerTitleAlign: 'center'
+              }}
+            />
             <Stack.Screen
               name="DatabaseScreen"
-              options={{ headerTitle: 'DatabaseScreen' }}
               component={DatabaseScreen}
+              options={{
+                headerTitle: () => (
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                    <View style={{ flex: 1, alignItems: 'flex-start' }}>
+                      <Text style={{ textAlign: 'left', color: 'white' }}>Database</Text>
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'center' }}>
+                      <TouchableOpacity>
+                        <Image
+                          source={require('./assets/blox.png')}
+                          style={{ width: 100, height: 42 }}
+                          resizeMode="contain"
+                        />
+                      </TouchableOpacity>
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'flex-end' }}>
+                      <TouchableOpacity>
+                        <Ionicons name="menu" size={33} color="white" />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                ),
+                headerTitleAlign: 'center'
+              }}
+            />
+            <Stack.Screen
+              name="MenuScreen"
+              component={MenuScreen}
+              options={{
+                headerTitle: () => (
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                    <View style={{ flex: 1, alignItems: 'flex-start' }}>
+                      <Text style={{ textAlign: 'left', color: 'white' }}>Menu</Text>
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'center' }}>
+                      <TouchableOpacity>
+                        <Image
+                          source={require('./assets/blox.png')}
+                          style={{ width: 100, height: 42 }}
+                          resizeMode="contain"
+                        />
+                      </TouchableOpacity>
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'flex-end' }}>
+                      <TouchableOpacity>
+                        <Ionicons name="menu" size={33} color="white" />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                ),
+                headerTitleAlign: 'center'
+              }}
             />
             <Stack.Screen
               name="CameraScreen"

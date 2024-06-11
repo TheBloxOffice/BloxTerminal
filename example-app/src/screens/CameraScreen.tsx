@@ -7,7 +7,8 @@ export default function CameraScreen() {
 
   const [facing, setFacing] = useState('back');
   const [permission, requestPermission] = useCameraPermissions();
-  const cameraRef = useRef('cameraRef');
+  const [scannedData, setScannedData] = useState(null);
+  const cameraRef = useRef(null);
 
   if (!permission) {
     // Camera permissions are still loading.
