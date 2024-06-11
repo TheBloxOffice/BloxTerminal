@@ -28,16 +28,28 @@ export default function CameraScreen() {
     setFacing(current => (current === 'back' ? 'front' : 'back'));
   }
 
+  const handleBarcodeScanned = ({ type, data }) => {
+    setScannedData(data);
+    // You might want to add some logic here to stop scanning after a successful scan
+    // For example: cameraRef.current.pausePreview();
+  }
+
   return (
     <View style={styles.container}>
+      {scannedData && (
+        <View style={styles.dataContainer}>
+          <Text style={styles.dataText}>Scanned Data: {scannedData}</Text>
+        </View>
+      )}
       <CameraView
         ref={cameraRef}
         style={styles.camera}
         facing={facing}
         barcodeScannerSettings={{
           barcodeTypes: ["qr"],
-          isHighlightingEnabled: true,
+          isHighlightingEnabled: true
         }}
+        onBarcodeScanned={scannedData ? undefined : handleBarcodeScanned}
       >
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
